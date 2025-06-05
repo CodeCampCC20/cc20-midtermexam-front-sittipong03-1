@@ -6,11 +6,11 @@ function TodoElement(props) {
 
   return (
     <div>
-        <div className='flex flex-row items-center w-80 bg-amber-900'>
-            <input className='m-1 basis-1/5' 
+        <div className='flex flex-row items-center w-80 mb-1'>
+            <input className='m-0.5 basis-1/5' 
             type="checkbox"></input>
-            <div className='basis-3/5'>{taskName}</div>
-            <button className="btn basis-1/5">x</button>
+            <div className=' text-white basis-3/5'>{taskName}</div>
+            <button className=" text-white basis-1/5">x</button>
         </div>
     </div>
   )

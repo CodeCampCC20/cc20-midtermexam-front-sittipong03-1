@@ -16,7 +16,7 @@ function TodoListPage() {
     
     },[])
 
-    
+
 
 
     // async function postUser() {
@@ -48,15 +48,16 @@ function TodoListPage() {
 
   return (
     <div>
-        <div className='w-full h-[100vh] flex-col flex items-center bg-amber-400 m-auto'>
-            <div className='bg-fuchsia-500 w-[400] mt-6 p-4'>
+        <div className='w-full h-[100vh] flex-col flex items-center '>
+            <div className='bg-gray-700 w-[400] mt-6 p-4 rounded-2xl '>
             <div className='flex justify-between w-[100%] p-2'>
-                <h1>My Todo</h1>
-                <div>logo smt</div>
+                <h1 className='text-white text-3xl '>My Todo</h1>
+                {/* <div>logo smt</div> */}
             </div>
             <div className='w-[100%] p-2'>
                 <input className='w-[80]' type="text" placeholder='new task' />
                 <button className='btn gap-0 m-0'>submit</button>
+                <hr className='m-1 mt-3 w-[100%] text-gray-400'/>
             </div>
             <div>
                 {

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router'
 
 function Navbar() {
   return (
-    <div className='m-8 text-center flex justify-center gap-6'>
+    <div className='h-20 text-white p-6 text-center flex justify-center gap-6 bg-gray-500 '>
         <NavLink to ="/">Todo List</NavLink>
         <NavLink to ="/login">Login</NavLink>
         <NavLink to ="/register">Register</NavLink>
