@@ -3,6 +3,7 @@ import TodoElement from '../component/TodoElement'
 import axios from "axios"
 import useTodoStore from '../api/usetodoStore'
 import postApi from '../api/postApi'
+import deletetApi from '../api/deleteApi'
 
 function TodoListPage() {
     const [getTodo , setGetTodo] = useState('')
@@ -14,7 +15,7 @@ function TodoListPage() {
         getApi(29)
         // postApi(29 ,'should work')
     
-    },[])
+    },[getTodo])
 
 
 
@@ -44,12 +45,19 @@ function TodoListPage() {
     // }
 
     // postFetch(29 , 'vs code 2 ')
-const hdlsubmitbtn = (e)=>{
-    e.preventDefault()
-    console.log(getTodo)
+    const hdlsubmitbtn = (e)=>{
+        e.preventDefault()
+        postApi(29 ,getTodo)
+        setGetTodo("")
+        getApi(29)
 
 
 }
+
+    const hdlDelete = (id, userId) => {
+        deletetApi(id, userId);
+        getApi(29); 
+    };
     
 
   return (
@@ -74,7 +82,13 @@ const hdlsubmitbtn = (e)=>{
             <hr className='m-1 mb-3 w-[100%] text-gray-400'/>
             <div>
                 {
-                    todoLists.map(el => <TodoElement id={el.id} taskName={el.taskName} completed={el.completed} userId={el.userId}/>)
+                    todoLists.map(el => <TodoElement 
+                        key={el.id} 
+                        id={el.id} 
+                        taskName={el.taskName} 
+                        completed={el.completed} 
+                        userId={el.userId} 
+                        hdlDelete={hdlDelete}/>)
                 }
             </div>
             </div>
