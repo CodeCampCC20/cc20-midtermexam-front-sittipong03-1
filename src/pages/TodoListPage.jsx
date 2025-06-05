@@ -2,48 +2,54 @@ import React, { useEffect, useState } from 'react'
 import TodoElement from '../component/TodoElement'
 import axios from "axios"
 import useTodoStore from '../api/usetodoStore'
-// import getApi from "../api/getApi"
+import postApi from '../api/postApi'
 
 function TodoListPage() {
-    const [getTodo , setGetTodo] = useState([])
+    const [getTodo , setGetTodo] = useState('')
     
     const getApi = useTodoStore((state)=> state.getApi)
     const todoLists = useTodoStore((state)=> state.todoLists)
 
     useEffect(()=>{
-        // postUser()
         getApi(29)
+        // postApi(29 ,'should work')
     
     },[])
 
 
 
 
-    // async function postUser() {
+    // async function postUser(id, post) {
     // try {
     //     const response = await axios.post(`http://cc20-todo-midterm-env.eba-fi9p2pds.ap-southeast-1.elasticbeanstalk.com/api/V1/todos` ,{
-    //         taskName: "test from vscode" ,
-    //         userId : 29
+    //         taskName: post ,
+    //         userId : id
     //     });
     // } catch (error) {
     //     console.error(error);
     // }
     // }
+    // postUser(29 , 'from vscode again')
     
-    // async function postFetch(){
-    //     const res = await fetch(`http://cc20-todo-midterm-env.eba-fi9p2pds.ap-southeast-1.elasticbeanstalk.com/api/V1/todos`,{
+    // async function postFetch(id, post){
+    //     const res = await fetch("http://cc20-todo-midterm-env.eba-fi9p2pds.ap-southeast-1.elasticbeanstalk.com/api/V1/todos",{
     //         method: "POST",
     //         body: JSON.stringify({ 
-    //             taskName: "test from vscode" ,
-    //             userId : 29
+    //             taskName: post,
+    //             userId : id
     //         }),
 
     //     })
-    //     const json = await res.json();
-    //     console.log(json)
+
     // }
 
+    // postFetch(29 , 'vs code 2 ')
+const hdlsubmitbtn = (e)=>{
+    e.preventDefault()
+    console.log(getTodo)
 
+
+}
     
 
   return (
@@ -55,10 +61,17 @@ function TodoListPage() {
                 {/* <div>logo smt</div> */}
             </div>
             <div className='w-[100%] p-2'>
-                <input className='w-[80]' type="text" placeholder='new task' />
-                <button className='btn gap-0 m-0'>submit</button>
-                <hr className='m-1 mt-3 w-[100%] text-gray-400'/>
+                <form action="">
+                <input className='w-[75%] h-[100%]' type="text" placeholder='new task' 
+                value = {getTodo}
+                onChange={e => setGetTodo(e.target.value)}
+                />
+                <button type="submit" className='btn btn-sm w-[25%]'
+                onClick={hdlsubmitbtn}
+                >submit</button>
+                </form>
             </div>
+            <hr className='m-1 mb-3 w-[100%] text-gray-400'/>
             <div>
                 {
                     todoLists.map(el => <TodoElement id={el.id} taskName={el.taskName} completed={el.completed} userId={el.userId}/>)
